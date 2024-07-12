@@ -22,7 +22,7 @@ This guide will walk you through setting up a Discord bot to earn the Active Dev
 
 ### Step 3: Clone the Repository and Set Up the Bot
 
-1. Clone this repository to your local machine.
+1. Clone this repository to your local machine or use Replit > [![Try with Replit Badge](https://replit.com/badge?caption=Install)](https://replit.com/new/github.com/lyxmyx/active-developer-badge)
 2. Create a `config.json` file in the root of the project with the following content:
    ```json
    {

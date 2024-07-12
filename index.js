@@ -35,7 +35,7 @@ const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBit
 
 client.on('ready', () => {
   client.user.setPresence({
-    activities: [{ name: 'magic', type: ActivityType.Streaming, url: 'https://www.twitch.tv/streamer' }],
+    activities: [{ name: '<:xdd:1239973274402684979>', type: ActivityType.Streaming, url: 'https://www.twitch.tv/streamer' }],
     status: 'online',
   });
 });
@@ -57,7 +57,9 @@ client.on('interactionCreate', async (interaction) => {
       });
 
     await interaction.reply({ embeds: [embed] });
-    process.exit(0);
+
+    client.user.setStatus('invisible'); // Change status to offline before shutdown
+    setTimeout(() => process.exit(0), 1000); // Ensure the status update propagates
   }
 });
 

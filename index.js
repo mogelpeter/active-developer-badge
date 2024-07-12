@@ -35,7 +35,7 @@ const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBit
 
 client.on('ready', () => {
   client.user.setPresence({
-    activities: [{ name: '<:xdd:1239973274402684979>', type: ActivityType.Streaming, url: 'https://www.twitch.tv/streamer' }],
+    activities: [{ name: 'magic', type: ActivityType.Streaming, url: 'https://www.twitch.tv/streamer' }],
     status: 'online',
   });
 });
@@ -45,7 +45,8 @@ client.on('interactionCreate', async (interaction) => {
 
   if (interaction.commandName === 'badge') {
     const ping = Date.now() - interaction.createdTimestamp;
-    const randomColor = Math.floor(Math.random() * 16777215).toString(16);
+    let randomColor = Math.floor(Math.random() * 16777215).toString(16);
+    randomColor = randomColor.padStart(6, '0'); // Ensure the color string is always 6 characters long
 
     const embed = new EmbedBuilder()
       .setTitle(`Success - Generated in ${ping}ms`)
@@ -66,12 +67,10 @@ client.on('interactionCreate', async (interaction) => {
 // Main function to start the bot
 (async () => {
   try {
-    const [chalk, fetch] = await Promise.all([
-      import('chalk'),
-      import('node-fetch')
-    ]);
+    const chalk = await import('chalk');
+    const fetch = await import('node-fetch');
 
-    const ratelimitTest = await fetch.default(`https://discord.com/api/v9/invites/discord-developers`);
+    const ratelimitTest = await fetch.default('https://discord.com/api/v9/invites/discord-developers');
     if (!ratelimitTest.ok) {
       console.error('Node is being blocked by Discord. Please try again later.');
       process.exit(1);

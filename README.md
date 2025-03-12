@@ -1,9 +1,8 @@
-
 # Discord Bot Setup for Active Developer Badge
 
 ## Introduction
 
-This guide will walk you through setting up a Discord bot to earn the Active Developer Badge. Follow the steps carefully to ensure your bot is set up correctly and eligible for the badge.
+This guide will walk you through setting up a Discord bot to earn the Active Developer Badge. This version uses environment variables instead of config.json for improved security.
 
 ## Instructions
 
@@ -23,11 +22,9 @@ This guide will walk you through setting up a Discord bot to earn the Active Dev
 ### Step 3: Clone the Repository and Set Up the Bot
 
 1. Click this badge to clone this repo to a new repl in Replit -> [![Run on Repl.it](https://replit.com/badge/github/mogelpeter/active-developer-badge)](https://replit.com/new/github/mogelpeter/active-developer-badge)
-2. Create a `config.json` file in the root of the project with the following content:
-   ```json
-   {
-     "token": "YOUR_DISCORD_BOT_TOKEN_HERE"
-   }
+2. Add your bot token to the `.env` file:
+   ```
+   DISCORD_BOT_TOKEN=YOUR_DISCORD_BOT_TOKEN_HERE
    ```
 3. Replace `YOUR_DISCORD_BOT_TOKEN_HERE` with the token you copied earlier.
 
@@ -43,9 +40,10 @@ This guide will walk you through setting up a Discord bot to earn the Active Dev
 1. Go back to the application page, go to the **General Information** tab, scroll down and copy the **Application ID**.
 2. Create a new Discord server (you can delete it at the end).
 3. Enable community on the server (you only need to do this if you don't own any other Discord server with community enabled).
-4. Return back to [Discord Developer Portal](https://discord.com/developers/applications).
-5. Copy the application ID.
-6. Use this invite link to add the application to the server: (replace `{applicationid}` with the copied ID) https://discord.com/oauth2/authorize?client_id={applicationid}&scope=bot%20applications.commands&permissions=105227086912
+4. Use this invite link to add the application to the server: (replace `{applicationid}` with the copied ID)
+   ```
+   https://discord.com/oauth2/authorize?client_id={applicationid}&scope=bot%20applications.commands&permissions=105227086912
+   ```
 
 ### Step 6: Test the Bot
 
@@ -58,3 +56,12 @@ This guide will walk you through setting up a Discord bot to earn the Active Dev
 3. Congrats on that shiny new badge!
 
 **NOTE**: Make sure you have the **"Use data to improve Discord"** setting enabled under User Settings > Privacy & Safety, otherwise you won't be able to be marked as eligible.
+
+## Using Environment Variables
+
+This bot now uses a `.env` file for securely storing your token. The advantages include:
+- Better security (the token won't be committed to version control)
+- Industry-standard approach for managing credentials
+- Easier to manage for deployment
+
+If the `.env` file doesn't exist when you first run the bot, it will create a sample file for you. Just edit it to add your token.

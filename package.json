@@ -4,12 +4,12 @@
     "description": "A Discord bot for managing commands",
     "main": "index.js",
     "scripts": {
-        "start": "node index.js",
-        "remove-commands": "node remove-commands.js"
+        "start": "node index.js"
     },
     "dependencies": {
         "chalk": "^5.3.0",
         "discord.js": "^14.0.0",
+        "dotenv": "^16.0.3",
         "node-fetch": "^3.0.0"
     },
     "engines": {
